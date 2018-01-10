@@ -36,9 +36,11 @@ class AntRightEnv(mujoco_env.MujocoEnv, utils.EzPickle):
 
     def _get_obs(self):
         return np.concatenate([
-            self.model.data.qpos.flat[2:],
+            #self.model.data.qpos.flat[2:],
+            #code by lxq
+            self.model.data.qpos.flat[3:],
             self.model.data.qvel.flat,
-            np.clip(self.model.data.cfrc_ext, -1, 1).flat,
+            #np.clip(self.model.data.cfrc_ext, -1, 1).flat,
         ])
 
     def reset_model(self):
