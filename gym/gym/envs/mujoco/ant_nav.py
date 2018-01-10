@@ -7,6 +7,9 @@ class AntDownEnv(mujoco_env.MujocoEnv, utils.EzPickle):
         self.goals = self.sample_goals()
         mujoco_env.MujocoEnv.__init__(self, 'ant.xml', 5)
         utils.EzPickle.__init__(self)
+    
+    def sample_goals(self, low=-20.0,high=20.0,size=2):
+        return np.random.uniform(low, high, size)
 
     def _step(self, a):
         # print ('torso: ', self.get_body_com("torso"))
